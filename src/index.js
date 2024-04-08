@@ -16,25 +16,24 @@ startBtn.addEventListener("click", () => {
 
 // ITERATION 2: Start Countdown
 function startCountdown() {
-  console.log("startCountdown called!");
-
   document.getElementById("start-btn").disabled = true;
 
-  remainingTime = 10;
-
   const intervalId = setInterval(() => {
-    remainingTime--;
 
     const remainTime = document.getElementById("time");
     remainTime.textContent = remainingTime;
 
-    if(remainingTime === 0) {
+    if(remainingTime === 10) {
+      showToast("⏰ Final countdown! ⏰");
+    } else if(remainingTime === 5) {
+      showToast("Start the engines! 💥");
+    } else if(remainingTime === 0) {
+      showToast("Lift off! 🚀");
       clearInterval(intervalId);
-
-      showToast();
       document.getElementById("start-btn").disabled = false;
+    } 
 
-    }
+    remainingTime--;
   }, 1000);
 
 
@@ -49,8 +48,10 @@ function showToast(message) {
   console.log("showToast called!");
 
   const toast = document.getElementById("toast");
+  const toastMessage = document.querySelector("#toast-message");
+
   toast.classList.add("show");
-  
+  toastMessage.textContent = message;
 
   const timeoutId = setTimeout(() => {
     toast.classList.remove("show");

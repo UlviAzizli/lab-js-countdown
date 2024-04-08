@@ -48,12 +48,27 @@ function startCountdown() {
 function showToast(message) {
   console.log("showToast called!");
 
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+  
+
+  const timeoutId = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000)
+
   // Your code goes here ...
 
 
 
 
   // BONUS: ITERATION 4: TOAST CLOSE BUTTON
+
+  const closeToastBtn = document.getElementById("close-toast");
+
+  closeToastBtn.addEventListener("click", function () {
+    toast.classList.remove("show");
+    clearTimeout(timeoutId);
+  });
 
   // Your code goes here ...
 

@@ -18,7 +18,7 @@ startBtn.addEventListener("click", () => {
 function startCountdown() {
   document.getElementById("start-btn").disabled = true;
 
-  const intervalId = setInterval(() => {
+  timer = setInterval(() => {
 
     const remainTime = document.getElementById("time");
     remainTime.textContent = remainingTime;
@@ -29,7 +29,7 @@ function startCountdown() {
       showToast("Start the engines! 💥");
     } else if(remainingTime === 0) {
       showToast("Lift off! 🚀");
-      clearInterval(intervalId);
+      clearInterval(timer);
       document.getElementById("start-btn").disabled = false;
     } 
 
